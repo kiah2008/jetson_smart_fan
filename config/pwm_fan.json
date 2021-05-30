@@ -1,0 +1,38 @@
+    [
+        {
+            "temp_thsd": 25,
+            "sample_interval": 1.0,
+            "dev_level": 0
+        },
+        {
+            "temp_thsd": 38.5,
+            "sample_interval": 0.8,
+            "dev_level": 45
+        },
+        {
+            "temp_thsd": 42,
+            "sample_interval": 0.5,
+            "dev_level": 55
+        },
+        {
+            "temp_thsd": 46,
+            "sample_interval": 0.5,
+            "dev_level": 90
+        },
+        {
+            "temp_thsd": 55,
+            "sample_interval": 0.25,
+            "dev_level": 120
+        },
+        {
+            "temp_thsd": 60,
+            "sample_interval": 0.25,
+            "dev_level": 150
+        }
+        ,
+        {
+            "temp_thsd": 100,
+            "sample_interval": 0.25,
+            "dev_level": 255
+        }
+    ]
