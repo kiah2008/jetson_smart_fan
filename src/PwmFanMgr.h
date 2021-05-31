@@ -16,11 +16,12 @@ namespace kiah
     class PwmFanMgr
     {
     public:
-        static PwmFanMgr *Instance(float max_temp = 60.0f);
+        static PwmFanMgr *Instance();
         void Run();
         bool Reset(const char *config);
         bool Start();
         void Join();
+        bool SetFanPwm(int level);
         
         void SetMaxTemp(float max_temp);
         ~PwmFanMgr();

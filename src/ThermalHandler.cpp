@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
+#include <algorithm>
 
 #include "debug.h"
 
@@ -30,6 +31,7 @@ bool  ThermalHandler::SetFanPwm(int level) {
         pwm_error("error to open fan target, %s.\n", strerror(errno));
         return false;
     }
+    level = std::max<int>(std::min<int>(level, 255), 0);
     fprintf(fan_target, "%d", level);
     pwm_info("using dev level %d\n", level);
     fclose(fan_target);

@@ -14,14 +14,19 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 [Unit]
-Description=jetson_stats service
+Description=jetson_smart_fan service
 
 [Service]
 ExecStart= [BINARY] -s -f [CONFIG_PATH]
 Restart=on-failure
-RestartSec=10s
-TimeoutStartSec=30s
-TimeoutStopSec=30s
+RestartSec=5s
+TimeoutSec=2s
+# We want systemd to give jetson_smart_fan some time to finish gracefully, but still want
+# it to kill jetson_smart_fan after TimeoutStopSec if something went wrong during the
+# graceful stop. Normally, Systemd sends SIGTERM signal right after the
+# ExecStop, which would kill jetson_smart_fan. We are sending useless SIGCONT here to give
+# jetson_smart_fan time to finish.
+KillSignal=SIGCONT
 
 [Install]
 WantedBy=multi-user.target

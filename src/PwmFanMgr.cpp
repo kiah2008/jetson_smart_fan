@@ -10,10 +10,9 @@
 
 using namespace kiah;
 
-PwmFanMgr *PwmFanMgr::Instance(float max_temp)
+PwmFanMgr *PwmFanMgr::Instance()
 {
     static PwmFanMgr instance_;
-    instance_.SetMaxTemp(max_temp);
     return &instance_;
 }
 
@@ -119,6 +118,10 @@ void PwmFanMgr::Join() {
     {
         monitor_thread_.join();
     }
+}
+
+bool PwmFanMgr::SetFanPwm(int level) {
+    return thermal_handler_.SetFanPwm(level);
 }
 
 PwmFanMgr::~PwmFanMgr()
