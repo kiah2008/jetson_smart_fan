@@ -1,6 +1,11 @@
 # Jetson smart fan
-an open source pwm fan program for nvidia jetson devices.
-jetson smart fan is implemented in c++ language and still under dev. Pull requests are welcome.
+an open source pwm fan program for nvidia jetson devices. You can customize the multiple pwm level with a simple json file.  
+You would need a `4 pin 5v pwm fan` for this to make sense. 3 pin fan wouldn't support the pwm, and will run with a default level.  
+PS. Strongely Recommend to use with a `4A power supply`.
+
+![nano fan](docs/nano_fan_layout.png)
+
+jetson smart fan is implemented in c/c++ language and still under dev. Pull requests are welcome.
 
 # Sync code
 Using git and run 
@@ -11,22 +16,27 @@ git clone https://github.com/kiah2008/jetson_smart_fan.git
 # Installation
 ## compile
 
-you can build it in jetson directly.
-PS. you can download cross-compile toolchain and using aarch64 gcc to compile and build the target.
+you can build it with jetson nano directly after uploading the sources.  
+PS. you can also download cross-compile toolchain and using aarch64 gcc to compile and build the target.
 
 using cmake to help the construction.
 
-command as below:
-
+command as below:  
 ```
 mkdir build
 cd build && cmake .. -DCMAKE_INSTALL_PREFIX=/etc/jetson_smart_fan
 make
+```
+## Install 
+It would install bin and conf into the path specificed during configure(aka CMAKE_INSTALL_PREFIX above) automaticlly.  
+ps. you may use `sudo` to fix the copy permission issue.
+```
 sudo make install
 ```
 
 # Configure
-see more details  in config/pwm_fan.json
+You can customize the PWM level in json, and see more details  in config/pwm_fan.json.
+
 ```
     [
         {
@@ -69,7 +79,7 @@ see more details  in config/pwm_fan.json
 ```
 
 # Run
-## start service
+## Start service
 after install, the service unit will be under /lib/systemd folders.
 you can start the service by manual.
 
@@ -77,12 +87,12 @@ you can start the service by manual.
 sudo systemctl daemon-reload
 sudo systemctl start jetson_smart_fan
 ```
-## start service when booting
+## Start service during booting
 ```
 sudo systemctl enable jetson_smart_fan
 ```
 
-## check service status
+## Check service status
 
 ```
 kiah@kiah-jetson:/etc/jetson_smart_fan$ systemctl status jetson_smart_fan
@@ -108,6 +118,6 @@ kiah@kiah-jetson:/etc/jetson_smart_fan$ systemctl status jetson_smart_fan
 
 
 # SOURCE CODE CONTRIBUTION
-
-Your contribution to jetson smart fan Project is much appreciated.
-Please send patches to me through GitHub.
+Your contribution to jetson smart fan Project is much appreciated.  
+Please feel free to open issues or pull requests on this Repository.  
+If you find this tool useful, you can support me with a star.
