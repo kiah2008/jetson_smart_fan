@@ -7,6 +7,8 @@ Strongely Recommend to use with a `4A power supply`.
 ![nano fan](docs/nano_fan_layout.png)
 
 jetson smart fan is implemented in c/c++ language and still under dev. Pull requests are welcome.
+it will power off the fan before halt or the thermal get a low level temperator automaticlly.
+The fan will be power on by default once plugin the charge.
 
 # Sync code
 Using git and run 
