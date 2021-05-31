@@ -120,8 +120,15 @@ void PwmFanMgr::Join() {
     }
 }
 
-bool PwmFanMgr::SetFanPwm(int level) {
-    return thermal_handler_.SetFanPwm(level);
+bool PwmFanMgr::SetPwm(const PwmLevelRecord& rec) {
+    std::lock_guard<std::mutex> _l(state_lock_);
+
+    if(thermal_handler_.SetFanPwm(rec.dev_level)) {
+        curr_record = rec;
+        return true;
+    } else {
+        return false;
+    }
 }
 
 PwmFanMgr::~PwmFanMgr()

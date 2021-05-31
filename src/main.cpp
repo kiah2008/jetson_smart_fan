@@ -15,9 +15,10 @@ const char *print_help = R"(
 
 void handler(int signo)
 {
-	pwm_info("SIGCONT caught\n");
-    auto pwm=kiah::PwmFanMgr::Instance();
-    pwm->SetFanPwm(0);
+    pwm_info("SIGCONT caught\n");
+    auto pwm = kiah::PwmFanMgr::Instance();
+    kiah::PwmLevelRecord pwm_rec{.temp_thsd = 35.0f, .sample_interval = 0.5f, .dev_level = 0};
+    pwm->SetPwm(pwm_rec);
 }
 
 int main(int argc, char **argv)
@@ -33,7 +34,7 @@ int main(int argc, char **argv)
     if (sigaction(SIGCONT, &act, 0) == -1)
     {
         pwm_error("Unexpected error while attempting to "
-               "setup test pre-conditions");
+                  "setup test pre-conditions");
         exit(1);
     }
 

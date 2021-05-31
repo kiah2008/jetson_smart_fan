@@ -21,7 +21,7 @@ namespace kiah
         bool Reset(const char *config);
         bool Start();
         void Join();
-        bool SetFanPwm(int level);
+        bool SetPwm(const PwmLevelRecord& rec);
         
         void SetMaxTemp(float max_temp);
         ~PwmFanMgr();

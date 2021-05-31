@@ -2,7 +2,7 @@
 an open source pwm fan program for nvidia jetson devices.
 jetson smart fan is implemented in c++ language and still under dev. Pull requests are welcome.
 
-# sync code
+# Sync code
 Using git and run 
 ```
 git clone https://github.com/kiah2008/jetson_smart_fan.git
@@ -25,6 +25,50 @@ make
 sudo make install
 ```
 
+# Configure
+see more details  in config/pwm_fan.json
+```
+    [
+        {
+            "temp_thsd": 25,
+            "sample_interval": 1.0,
+            "dev_level": 0
+        },
+        {
+            "temp_thsd": 38.5,
+            "sample_interval": 0.8,
+            "dev_level": 45
+        },
+        {
+            "temp_thsd": 42,
+            "sample_interval": 0.5,
+            "dev_level": 55
+        },
+        {
+            "temp_thsd": 46,
+            "sample_interval": 0.5,
+            "dev_level": 90
+        },
+        {
+            "temp_thsd": 55,
+            "sample_interval": 0.25,
+            "dev_level": 120
+        },
+        {
+            "temp_thsd": 60,
+            "sample_interval": 0.25,
+            "dev_level": 150
+        }
+        ,
+        {
+            "temp_thsd": 100,
+            "sample_interval": 0.25,
+            "dev_level": 255
+        }
+    ]
+```
+
+# Run
 ## start service
 after install, the service unit will be under /lib/systemd folders.
 you can start the service by manual.
