@@ -10,7 +10,6 @@ add_executable(jetson_smart_fan  main.cpp
 target_compile_definitions(jetson_smart_fan PRIVATE -DUSING_THREAD=1 -DHAVE_VSYSLOG=1)
 target_link_libraries(jetson_smart_fan static_cjason pthread)
 
-message(warning "===== ${CMAKE_INSTALL_PREFIX}")
 # set_target_properties(jetson_smart_fan
 #   PROPERTIES
 #   ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_INSTALL_PREFIX}/bin"
